@@ -69,6 +69,15 @@ orgs.newOrg('technology.rcptt', 'eclipse-rcptt') {
       workflows+: {
         enabled: false,
       },
+      webhooks: [
+        orgs.newRepoWebhook('https://ci.eclipse.org/rcptt/github-webhook/') {
+          content_type: "json",
+          events+: [
+            "pull_request",
+            "push"
+          ],
+        },
+      ],
     },
   ],
 } + {
